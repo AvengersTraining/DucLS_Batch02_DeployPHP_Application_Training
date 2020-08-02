@@ -10,13 +10,13 @@ set('application', 'Deploy');
 set('repository', 'git@github.com:AvengersTraining/DucLS_Batch02_DeployPHP_Application_Training.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
-set('git_tty', true); 
+set('git_tty', false);
 
-// Shared files/dirs between deploys 
+// Shared files/dirs between deploys
 add('shared_files', ['.env']);
 add('shared_dirs', ['.storage']);
 
-// Writable dirs by web server 
+// Writable dirs by web server
 add('writable_dirs', [
     'bootstrap/cache',
     'storage',
@@ -36,8 +36,8 @@ host('167.71.216.4')
     ->user('deploy')
     ->stage('development')
     ->set('deploy_path', '~/{{application}}')
-    ->forwardAgent(false);    
-    
+    ->forwardAgent(false);
+
 // Tasks
 
 task('build', function () {
@@ -45,7 +45,7 @@ task('build', function () {
 });
 
 task('reload:php-fpm', function () {
-    run('sudo /usr/sbin/service php7.3-fpm reload');
+    run('sudo service php7.3-fpm reload');
 });
 
 task('npm:install', function () {

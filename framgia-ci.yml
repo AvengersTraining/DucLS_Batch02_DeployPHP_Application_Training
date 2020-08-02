@@ -44,7 +44,7 @@ deploy:
     image: framgiaciteam/deployer:latest
     when:
       branch: master
-    run: php deployer.phar deploy staging -vvv
+    run: php deployer.phar deploy development -vvv
 cache:
   composer:
     folder: vendor
